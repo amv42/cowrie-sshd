@@ -27,6 +27,11 @@ from twisted.python.compat import _bytesChr as chr
 class HoneyPotSSHTransport(transport.SSHServerTransport, TimeoutMixin):
     """
     """
+    # sshd-cowrie: add code start
+    def __init__(self, *args, **kw):
+        self.data_counter = 0
+        self.remote_version = ""
+    # sshd-cowrie: add code end
     logintime = None
     gotVersion = False
 
@@ -46,22 +51,27 @@ class HoneyPotSSHTransport(transport.SSHServerTransport, TimeoutMixin):
         We send our version, but wait with sending KEXINIT
         """
         self.transportId = uuid.uuid4().hex[:12]
-        src_ip = self.transport.getPeer().host
-        ipv4rex = re.compile(r'^::ffff:(\d+\.\d+\.\d+\.\d+)$')
-        ipv4_search = ipv4rex.search(src_ip)
-        if ipv4_search != None:
-            src_ip = ipv4_search.group(1)
 
-        log.msg(eventid='cowrie.session.connect',
-                format="New connection: %(src_ip)s:%(src_port)s (%(dst_ip)s:%(dst_port)s) [session: %(session)s]",
-                src_ip=src_ip, src_port=self.transport.getPeer().port,
-                dst_ip=self.transport.getHost().host, dst_port=self.transport.getHost().port,
-                session=self.transportId, sessionno='S'+str(self.transport.sessionno), protocol='ssh')
+        # sshd-cowrie: remove code start
+        # src_ip = self.transport.getPeer().host
+        # ipv4rex = re.compile(r'^::ffff:(\d+\.\d+\.\d+\.\d+)$')
+        # ipv4_search = ipv4rex.search(src_ip)
+        # if ipv4_search != None:
+        #     src_ip = ipv4_search.group(1)
+
+        # log.msg(eventid='cowrie.session.connect',
+        #         format="New connection: %(src_ip)s:%(src_port)s (%(dst_ip)s:%(dst_port)s) [session: %(session)s]",
+        #         src_ip=src_ip, src_port=self.transport.getPeer().port,
+        #         dst_ip=self.transport.getHost().host, dst_port=self.transport.getHost().port,
+        #         session=self.transportId, sessionno='S'+str(self.transport.sessionno), protocol='ssh')
+        # sshd-cowrie: remove code end
 
         self.transport.write(b''+self.ourVersionString+b'\r\n')
         self.currentEncryptions = transport.SSHCiphers(b'none', b'none', b'none', b'none')
         self.currentEncryptions.setKeys(b'', b'', b'', b'', b'', b'')
-        self.setTimeout(120)
+        # sshd-cowrie: remove code start
+        # self.setTimeout(120)
+        # sshd-cowrie: remove code end
         self.logintime = time.time()
 
 
@@ -89,14 +99,34 @@ class HoneyPotSSHTransport(transport.SSHServerTransport, TimeoutMixin):
 
         @type data: C{str}
         """
+        # sshd-cowrie: add code start
+        if self.data_counter == 0:
+            self.data_counter = self.data_counter + 1
+            try:
+                src_ip, src_port, self.remote_version = data.split(b";", 2)
+                log.msg(eventid='cowrie.session.connect',
+                        format='New connection: %(src_ip)s:%(src_port)s (%(dst_ip)s:%(dst_port)s) [session: %(session)s]',
+                        src_ip=src_ip, src_port=src_port,
+                        dst_ip=self.transport.getHost().host, dst_port=self.transport.getHost().port,
+                        session=self.transportId, sessionno='S' + str(self.transport.sessionno), protocol='ssh')
+                return
+            except:
+                pass
+        # sshd-cowrie: add code end
+
         self.buf = self.buf + data
         if not self.gotVersion:
             if not b'\n' in self.buf:
                 return
             #self.otherVersionString = self.buf.split(b'\n')[0].strip().encode('string-escape')
             self.otherVersionString = self.buf.split(b'\n')[0].strip()
-            log.msg(eventid='cowrie.client.version', version=self.otherVersionString,
+            # sshd-cowrie: add code start
+            log.msg(eventid='cowrie.client.version', version=self.remote_version,
                     format="Remote SSH version: %(version)s")
+            # log.msg(eventid='cowrie.client.version', version=self.otherVersionString,
+            #         format="Remote SSH version: %(version)s")
+            # sshd-cowrie: add code end
+
             if self.buf.startswith(b'SSH-'):
                 self.gotVersion = True
                 remoteVersion = self.buf.split(b'-')[1]

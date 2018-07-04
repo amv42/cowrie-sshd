@@ -148,9 +148,10 @@ backend = shell
 #internet_facing_ip = 9.9.9.9
 
 
+# -- sshd_honey
 # Enable to log the public IP of the honeypot (useful if listening on 127.0.0.1)
 # IP address is obtained by querying http://myip.threatstream.com
-#report_public_ip = true
+report_public_ip = true
 
 
 
@@ -192,8 +193,9 @@ auth_class = UserDB
 # historical options in [honeypot] that have not yet been moved to [ssh]
 # ============================================================================
 
+# -- sshd_honey
 # Source Port to report in logs (useful if you use iptables to forward ports to Cowrie)
-#reported_ssh_port = 22
+reported_ssh_port = 22
 
 
 
@@ -360,13 +362,14 @@ version = SSH-2.0-OpenSSH_6.0p1 Debian-4+deb7u2
 #listen_port = 2222
 
 
+# -- sshd_honey
 # Endpoint to listen on for incoming SSH connections.
 # See https://twistedmatrix.com/documents/current/core/howto/endpoints.html#servers
 # (default: listen_endpoints = tcp:2222:interface=0.0.0.0)
 # (use systemd: endpoint for systemd activation)
 # listen_endpoints = systemd:domain=INET:index=0
 # For both IPv4 and IPv6: listen_endpoints = tcp6:2222:interface=\:\:
-listen_endpoints = tcp:2222:interface=0.0.0.0
+listen_endpoints = tcp:65522:interface=127.0.0.1
 
 
 # Enable the SFTP subsystem

@@ -1,16 +1,16 @@
 # Cowrie-sshd
 
-Attention: This is a slightly modified version of Cowrie so that Cowrie can be used as "backend" for the OpenSSH deamon (sshd) to interpret commands.
+Attention: This is a modified version of Cowrie so that Cowrie can be used as backend for the [sshd-honeypot](https://github.com/amv42/sshd-honeypot) (OpenSSH deamon) to interpret commands.
 
 
 ---
 
-# Welcome to the Cowrie GitHub repository
+## Welcome to the Cowrie GitHub repository
 
 This is the official repository for the Cowrie SSH and Telnet
 Honeypot effort.
 
-# What is Cowrie
+## What is Cowrie
 
 Cowrie is a medium interaction SSH and Telnet honeypot designed to
 log brute force attacks and the shell interaction performed by the
@@ -18,11 +18,11 @@ attacker.
 
 [Cowrie](http://github.com/micheloosterhof/cowrie/) is developed by Michel Oosterhof.
 
-## Slack
+### Slack
 
 You can join the Cowrie community at the following [Slack workspace](https://cowrie.slack.com/join/shared_invite/enQtMzc3NjY3OTYwMjI0LThiY2ViMjkyNDgzOTE2ZjI3NTI0N2QxZmI2Yzg2ZmFkYmFlYTg1NTU4OWZjOWM0MjBlNjQ2MjA1NmUyOWVlNDA)
 
-## Features
+### Features
 
 Some interesting features:
 
@@ -40,13 +40,13 @@ Additional functionality over standard kippo:
 * Logging in JSON format for easy processing in log management solutions
 * Many, many additional commands
 
-## Docker
+### Docker
 
 Docker versions are available.
 * Get the Dockerfile directly at https://github.com/cowrie/docker-cowrie
 * Run from the Docker regstry with: ```docker pull cowrie/cowrie```
 
-## Requirements
+### Requirements
 
 Software required:
 
@@ -55,7 +55,7 @@ Software required:
 
 For Python dependencies, see requirements.txt
 
-## Files of interest:
+### Files of interest:
 
 * `cowrie.cfg` - Cowrie's configuration file. Default values can be found in `cowrie.cfg.dist`
 * `data/fs.pickle` - fake filesystem
@@ -71,15 +71,15 @@ For Python dependencies, see requirements.txt
 * `bin/createfs` - used to create the fake filesystem
 * `bin/playlog` - utility to replay session logs
 
-## Is it secure?
+### Is it secure?
 
 Maybe. See [FAQ](https://github.com/micheloosterhof/cowrie/wiki/Frequently-Asked-Questions)
 
-## I have some questions!
+### I have some questions!
 
 Please visit https://cowrie.slack.com/ and join the #questions channel
 
-## I'd like to install with Docker
+### I'd like to install with Docker
 
 Run:
 ```docker pull cowrie/cowrie```
@@ -87,7 +87,7 @@ to download images from hub.docker.com
 
 Or look at https://github.com/cowrie/docker-cowrie for the Dockerfile
 
-## Contributors
+### Contributors
 
 Many people have contributed to Cowrie over the years. Special thanks to:
 
