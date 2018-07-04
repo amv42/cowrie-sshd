@@ -1,3 +1,9 @@
+# Cowrie-sshd
+
+Attention: This is a slightly modified version of Cowrie so that Cowrie can be used as "backend" for the OpenSSH deamon (sshd) to interpret commands.
+
+
+---
 
 # Welcome to the Cowrie GitHub repository
 
