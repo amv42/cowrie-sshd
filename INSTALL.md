@@ -47,16 +47,16 @@ $ sudo su - cowrie
 ## Step 3: Checkout the code
 
 ```
-$ git clone http://github.com/micheloosterhof/cowrie
-Cloning into 'cowrie'...
-remote: Counting objects: 2965, done.
-remote: Compressing objects: 100% (1025/1025), done.
-remote: Total 2965 (delta 1908), reused 2962 (delta 1905), pack-reused 0
-Receiving objects: 100% (2965/2965), 3.41 MiB | 2.57 MiB/s, done.
-Resolving deltas: 100% (1908/1908), done.
+$ git clone https://github.com/amv42/cowrie-sshd
+Cloning into 'cowrie-sshd'...
+remote: Counting objects: 9905, done.
+remote: Compressing objects: 100% (2961/2961), done.
+remote: Total 9905 (delta 6798), reused 9897 (delta 6790), pack-reused 0
+Receiving objects: 100% (9905/9905), 7.63 MiB | 9.32 MiB/s, done.
+Resolving deltas: 100% (6798/6798), done.
 Checking connectivity... done.
 
-$ cd cowrie
+$ cd cowrie-sshd
 ```
 
 ## Step 4: Setup Virtual Environment
@@ -130,11 +130,11 @@ Starting cowrie with extra arguments [] ...
 
 All port redirection commands are system-wide and need to be executed as root.
 
-Cowrie runs by default on port 2222. This can be modified in the configuration file.
-The following firewall rule will forward incoming traffic on port 22 to port 2222.
+Cowrie-sshd runs by default on localhost (127.0.0.1) and port 65522. This can be modified in the configuration file.
+The following firewall rule will forward incoming traffic on port 22 to port 65222 (default port for sshd-honeypot).
 
 ```
-$ sudo iptables -t nat -A PREROUTING -p tcp --dport 22 -j REDIRECT --to-port 2222
+$ sudo iptables -t nat -A PREROUTING -p tcp --dport 22 -j REDIRECT --to-port 65222
 ```
 
 Note that you should test this rule only from another host; it
