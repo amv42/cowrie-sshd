@@ -65,10 +65,12 @@ Next you need to create your virtual environment:
 
 ```
 $ pwd
-/home/cowrie/cowrie
+/home/cowrie/cowrie-sshd
 $ virtualenv cowrie-env
-New python executable in ./cowrie/cowrie-env/bin/python
-Installing setuptools, pip, wheel...done.
+Running virtualenv with interpreter /usr/bin/python2
+New python executable in /home/cowrie/cowrie-sshd/cowrie-env/bin/python2
+Also creating executable in /home/cowrie/cowrie-sshd/cowrie-env/bin/python
+Installing setuptools, pkg_resources, pip, wheel...done.
 ```
 
 Alternatively, create a Python3 virtual environment (under development)
