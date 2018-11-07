@@ -1,3 +1,11 @@
+
+Release 1.5.1 release
+
+* 2018-10-13 Fixes VT uploads, tab completion on Python3, Hassh support, setuptools functional. userdb migration
+* 2018-09-07 NOTE! data/userdb.txt has moved to etc/userdb.txt and a default config is no longer provided!
+* 2018-08-25 Downloads and TTY logs have moved to the var/ directory
+* 2018-08-11 SSH keys now stored in var/lib/cowrie
+* 2018-07-21 source code has move to the src/ directory. Delete old directories twisted/cowrie with compiled code
 * 2018-06-29 txtcmds have been moved to share/cowrie/txtcmds
 * 2018-06-28 filesystem config entry has changed. please verify if you have custom entry or pickle file
 * 2018-06-23 fingerprint log message now holds KEX attributes and a unique fingerprint for the client
