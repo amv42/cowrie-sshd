@@ -373,7 +373,6 @@ version = SSH-2.0-OpenSSH_6.0p1 Debian-4+deb7u2
 # (use systemd: endpoint for systemd activation)
 # listen_endpoints = systemd:domain=INET:index=0
 # For both IPv4 and IPv6: listen_endpoints = tcp6:2222:interface=\:\:
-<<<<<<< HEAD:cowrie.cfg.dist
 listen_endpoints = tcp:65522:interface=127.0.0.1
 =======
 # Listening on multiple endpoints is supported with a single space seperator
@@ -381,7 +380,6 @@ listen_endpoints = tcp:65522:interface=127.0.0.1
 # use authbind for port numbers under 1024
 
 listen_endpoints = tcp:2222:interface=0.0.0.0
->>>>>>> 24c9c9507b221fe6eacb1a22f74fa9b4f0678a90:etc/cowrie.cfg.dist
 
 
 # Enable the SFTP subsystem

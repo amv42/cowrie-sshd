@@ -52,7 +52,6 @@ $ sudo su - cowrie
 ## Step 3: Checkout the code
 
 ```
-<<<<<<< HEAD
 $ git clone https://github.com/amv42/cowrie-sshd
 Cloning into 'cowrie-sshd'...
 remote: Counting objects: 9905, done.
@@ -68,7 +67,6 @@ remote: Compressing objects: 100% (1025/1025), done.
 remote: Total 2965 (delta 1908), reused 2962 (delta 1905), pack-reused 0
 Receiving objects: 100% (2965/2965), 3.41 MiB | 2.57 MiB/s, done.
 Resolving deltas: 100% (1908/1908), done.
->>>>>>> 24c9c9507b221fe6eacb1a22f74fa9b4f0678a90
 Checking connectivity... done.
 
 $ cd cowrie-sshd
@@ -80,26 +78,12 @@ Next you need to create your virtual environment:
 
 ```
 $ pwd
-<<<<<<< HEAD
 /home/cowrie/cowrie-sshd
 $ virtualenv cowrie-env
 Running virtualenv with interpreter /usr/bin/python2
 New python executable in /home/cowrie/cowrie-sshd/cowrie-env/bin/python2
 Also creating executable in /home/cowrie/cowrie-sshd/cowrie-env/bin/python
 Installing setuptools, pkg_resources, pip, wheel...done.
-=======
-/home/cowrie/cowrie
-$ virtualenv --python=python3 cowrie-env
-New python executable in ./cowrie/cowrie-env/bin/python
-Installing setuptools, pip, wheel...done.
->>>>>>> 24c9c9507b221fe6eacb1a22f74fa9b4f0678a90
-```
-
-Alternatively, create a Python2 virtual environment
-```
-$ virtualenv --python=python2 cowrie-env
-New python executable in ./cowrie/cowrie-env/bin/python
-Installing setuptools, pip, wheel...done.
 ```
 
 Activate the virtual environment and install packages
@@ -159,10 +143,6 @@ server to a different port number first.
 <<<<<<< HEAD
 Cowrie-sshd runs by default on localhost (127.0.0.1) and port 65522. This can be modified in the configuration file.
 The following firewall rule will forward incoming traffic on port 22 to port 65222 (default port for sshd-honeypot).
-=======
-Cowrie runs by default on port 2222. This can be modified in the configuration file.
-The following firewall rule will forward incoming traffic on port 22 to port 2222 on Linux:
->>>>>>> 24c9c9507b221fe6eacb1a22f74fa9b4f0678a90
 
 ```
 $ sudo iptables -t nat -A PREROUTING -p tcp --dport 22 -j REDIRECT --to-port 65222

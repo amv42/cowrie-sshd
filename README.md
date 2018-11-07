@@ -1,11 +1,7 @@
-<<<<<<< HEAD
 # Cowrie-sshd
 =======
 Cowrie
 ======
-
-![Travis CI Status](https://travis-ci.org/cowrie/cowrie.svg?branch=master "Travis CI Status")
->>>>>>> 24c9c9507b221fe6eacb1a22f74fa9b4f0678a90
 
 Attention: This is a modified version of Cowrie so that Cowrie can be used as backend for the [sshd-honeypot](https://github.com/amv42/sshd-honeypot) (OpenSSH deamon) to interpret commands.
 
@@ -88,7 +84,6 @@ Maybe. See [FAQ](https://github.com/cowrie/cowrie/wiki/Frequently-Asked-Question
 
 Please visit https://cowrie.slack.com/ and join the #questions channel
 
-<<<<<<< HEAD
 ### I'd like to install with Docker
 
 Run:
@@ -100,7 +95,6 @@ Or look at https://github.com/cowrie/docker-cowrie for the Dockerfile
 ### Contributors
 =======
 ## Contributors
->>>>>>> 24c9c9507b221fe6eacb1a22f74fa9b4f0678a90
 
 Many people have contributed to Cowrie over the years. Special thanks to:
 
