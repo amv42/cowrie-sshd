@@ -54,7 +54,8 @@ class HoneyPotSSHTransport(transport.SSHServerTransport, TimeoutMixin):
         We send our version, but wait with sending KEXINIT
         """
         self.transportId = uuid.uuid4().hex[:12]
-
+        self.startTime = time.time()
+        self.logintime = time.time()
         # sshd-cowrie: remove code start
         # src_ip = self.transport.getPeer().host
         # ipv4rex = re.compile(r'^::ffff:(\d+\.\d+\.\d+\.\d+)$')
@@ -75,19 +76,15 @@ class HoneyPotSSHTransport(transport.SSHServerTransport, TimeoutMixin):
         # )
         # sshd-cowrie: remove code end
 
-        self.transport.write(b''+self.ourVersionString+b'\r\n')
-        self.currentEncryptions = transport.SSHCiphers(b'none', b'none', b'none', b'none')
-        self.currentEncryptions.setKeys(b'', b'', b'', b'', b'', b'')
         # sshd-cowrie: remove code start
         # self.setTimeout(120)
         # sshd-cowrie: remove code end
-        self.logintime = time.time()
 
         self.transport.write('{0}\r\n'.format(self.ourVersionString).encode('ascii'))
         self.currentEncryptions = transport.SSHCiphers(b'none', b'none', b'none', b'none')
         self.currentEncryptions.setKeys(b'', b'', b'', b'', b'', b'')
 
-        self.startTime = time.time()
+        
         try:
             self.setTimeout(CONFIG.getint('honeypot', 'authentication_timeout'))
         except NoOptionError:
@@ -125,7 +122,7 @@ class HoneyPotSSHTransport(transport.SSHServerTransport, TimeoutMixin):
                         format='New connection: %(src_ip)s:%(src_port)s (%(dst_ip)s:%(dst_port)s) [session: %(session)s]',
                         src_ip=src_ip, src_port=src_port,
                         dst_ip=self.transport.getHost().host, dst_port=self.transport.getHost().port,
-                        session=self.transportId, sessionno='S' + str(self.transport.sessionno), protocol='ssh')
+                        session=self.transportId, sessionno='S{0}'.format(self.transport.sessionno), protocol='ssh')
                 return
             except:
                 pass
