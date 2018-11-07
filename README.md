@@ -1,7 +1,5 @@
 # Cowrie-sshd
 =======
-Cowrie
-======
 
 Attention: This is a modified version of Cowrie so that Cowrie can be used as backend for the [sshd-honeypot](https://github.com/amv42/sshd-honeypot) (OpenSSH deamon) to interpret commands.
 
@@ -93,8 +91,6 @@ to download images from hub.docker.com
 Or look at https://github.com/cowrie/docker-cowrie for the Dockerfile
 
 ### Contributors
-=======
-## Contributors
 
 Many people have contributed to Cowrie over the years. Special thanks to:
 
