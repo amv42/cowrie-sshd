@@ -144,8 +144,6 @@ class HoneyPotSSHTransport(transport.SSHServerTransport, TimeoutMixin):
             #         format="Remote SSH version: %(version)s")
             # sshd-cowrie: add code end
 
-            if self.buf.startswith(b'SSH-'):
-
             log.msg(eventid='cowrie.client.version', version=repr(self.otherVersionString),
                     format="Remote SSH version: %(version)s")
             m = re.match(br'SSH-(\d+).(\d+)-(.*)', self.otherVersionString)
