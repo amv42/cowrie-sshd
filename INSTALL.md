@@ -140,7 +140,6 @@ All port redirection commands are system-wide and need to be executed as root.
 A firewall redirect can make your existing SSH server unreachable, remember to move the existing
 server to a different port number first.
 
-<<<<<<< HEAD
 Cowrie-sshd runs by default on localhost (127.0.0.1) and port 65522. This can be modified in the configuration file.
 The following firewall rule will forward incoming traffic on port 22 to port 65222 (default port for sshd-honeypot).
 
