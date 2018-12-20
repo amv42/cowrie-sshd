@@ -60,15 +60,6 @@ remote: Total 9905 (delta 6798), reused 9897 (delta 6790), pack-reused 0
 Receiving objects: 100% (9905/9905), 7.63 MiB | 9.32 MiB/s, done.
 Resolving deltas: 100% (6798/6798), done.
 =======
-$ git clone http://github.com/cowrie/cowrie
-Cloning into 'cowrie'...
-remote: Counting objects: 2965, done.
-remote: Compressing objects: 100% (1025/1025), done.
-remote: Total 2965 (delta 1908), reused 2962 (delta 1905), pack-reused 0
-Receiving objects: 100% (2965/2965), 3.41 MiB | 2.57 MiB/s, done.
-Resolving deltas: 100% (1908/1908), done.
-Checking connectivity... done.
-
 $ cd cowrie-sshd
 ```
 
